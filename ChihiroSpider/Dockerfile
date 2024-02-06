@@ -24,6 +24,6 @@ RUN poetry config virtualenvs.create false && poetry install --only main --no-in
 
 
 # run the app server in production with gunicorn
-CMD ["scrapy", "crawl ", "JianshuSpider"]
+CMD ["poetry", "run", "scrapy", "crawl", "JianshuSpider"]
 
 

@@ -22,7 +22,7 @@ def _remove_html_tags(value):
     return remove_tags(value)
 
 
-_es = connections.create_connection(ArticleType._doc_type.using)
+_es = connections.create_connection(hosts="http://elasticsearch:9200")
 
 
 def _gen_suggests(index: Any, info_tuple: Tuple[str, int])-> List[Dict[str, List]]:

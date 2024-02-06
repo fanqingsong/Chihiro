@@ -7,7 +7,7 @@ authors = ["Zhang liangliang <zhangliangliang1996@hotmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
-scrapy ="^2.0.1"
+scrapy ="^2.6.0"
 scrapy-redis = "^0.6.8"
 elasticsearch = "^7.6.0"
 elasticsearch-dsl = "^7.1.0"

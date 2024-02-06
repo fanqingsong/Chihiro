@@ -79,6 +79,10 @@ ITEM_PIPELINES = {
    'ChihiroSpider.pipelines.ChihirospiderPipeline': 300,
 }
 
+REDIS_HOST = 'redis'
+REDIS_PORT = 6379
+
+
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
