@@ -1,16 +1,15 @@
 [tool.poetry]
-name = "chihirospider"
+name = "chihirosearch"
 version = "0.1.0"
-description = "Chihiro spider"
+description = "Chihiro search"
 license = "MIT"
 authors = ["Qingsong <qsfan@qq.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
-scrapy ="^2.6.0"
-scrapy-redis = "^0.6.8"
 elasticsearch = "^7.6.0"
 elasticsearch-dsl = "^7.1.0"
+Django = "^3.0.14"
 
 [tool.poetry.dev-dependencies]
 

@@ -7,7 +7,7 @@ from elasticsearch import Elasticsearch
 from datetime import datetime
 from typing import List
 
-client = Elasticsearch(hosts=["127.0.0.1"])
+client = Elasticsearch(hosts=["elasticsearch"])
 
 
 # Create your views here.

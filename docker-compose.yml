@@ -8,6 +8,15 @@ services:
       - elasticsearch
       - redis
 
+  search:
+    build: ./ChihiroSearch
+    ports:
+      - "8000:8000"
+    networks:
+      - chihiro
+    depends_on:
+      - elasticsearch
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: elasticsearch
