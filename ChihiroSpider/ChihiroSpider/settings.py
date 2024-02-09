@@ -79,7 +79,7 @@ ITEM_PIPELINES = {
    'ChihiroSpider.pipelines.ChihirospiderPipeline': 300,
 }
 
-REDIS_HOST = 'redis'
+REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 
 

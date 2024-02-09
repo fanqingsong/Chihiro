@@ -1,9 +1,9 @@
 from elasticsearch_dsl import Document, Text, Completion, Keyword
-from elasticsearch_dsl.connections import connections
+# from elasticsearch_dsl.connections import connections
 from elasticsearch_dsl.analysis import CustomAnalyzer as _CustomAnalyzer
 from typing import Dict
 
-connections.create_connection(hosts=['localhost'])
+# connections.create_connection(hosts=['localhost'])
 
 
 class CustomAnalyzer(_CustomAnalyzer):

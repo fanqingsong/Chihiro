@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 
 # Define here the models for your scraped items
 #
@@ -55,6 +56,8 @@ class JianshuItem(scrapy.Item):
     author = scrapy.Field()
 
     def save(self)-> None:
+        logging.info(f'------------enter itmes save -----------')
+
         article = ArticleType()
         article.title = self['title']
         article.url = self['url']

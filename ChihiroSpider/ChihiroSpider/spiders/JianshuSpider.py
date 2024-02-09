@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import logging
+
 import scrapy
 from scrapy.http import Request
 from urllib import parse
@@ -21,6 +23,8 @@ class JianshuSpider(RedisSpider):
     }
 
     def parse(self, response) ->Generator[Request, Any, None]:
+        logging.info(f'----------------- jianshuspider parse -------------------')
+
         top_tags = response.xpath("//div[@class='main-top']/div[@class='info']/text()").extract()[0]
         total_nums = int(re.findall(r'\d+', top_tags)[0])
         article_urls = response.xpath("//ul[@class='note-list']/li/a/@href").extract()
@@ -33,6 +37,8 @@ class JianshuSpider(RedisSpider):
             yield Request(url=next_page_url, callback=self.parse)
 
     def parse_detail(self, response) -> Generator[scrapy.Item, Any, None]:
+        logging.info(f'----------------- jianshuspider parse_detail -------------------')
+
         item_loader = JianshuItemLoader(item=JianshuItem(), response=response)
         item_loader.add_value("url", response.url)
         item_loader.add_xpath("title", "//div[@class='article']/h1/text()")
