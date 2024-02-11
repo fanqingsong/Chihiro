@@ -42,13 +42,16 @@ class JianshuSpider(RedisSpider):
 
     def parse_detail(self, response) -> Generator[scrapy.Item, Any, None]:
         logging.info(f'----------------- jianshuspider parse_detail -------------------')
+        logging.info(f'----- response ---------')
+        logging.info(response)
+        logging.info(response.text)
 
         item_loader = JianshuItemLoader(item=JianshuItem(), response=response)
         item_loader.add_value("url", response.url)
         # item_loader.add_xpath("title", "//div[@class='article']/h1/text()")
-        item_loader.add_xpath("title", "/html/body/div/div[1]/div/div/section[1]/h1/text()")
-        item_loader.add_xpath('content', "/html/body/div/div[1]/div/div/section[1]/article/text()")
-        item_loader.add_xpath('author', "/html/body/div/div[1]/div/div/section[1]/div[2]/div/div/div[1]/span[1]/text()")
+        item_loader.add_xpath("title", "/html/body/div/text()")
+        item_loader.add_xpath('content', "/html/body/div/text()")
+        item_loader.add_xpath('author', "/html/body/text()")
 
         jianshu_item = item_loader.load_item()
 

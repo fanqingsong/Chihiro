@@ -20,10 +20,24 @@ class ArticleType(Document):
     url = Keyword()
     content = Text(analyzer='ik_max_word')
     author = Text(analyzer='ik_max_word')
+    #
+    # def clean(self):
+    #     """
+    #     Automatically construct the suggestion input and weight by taking all
+    #     possible permutation of Person's name as ``input`` and taking their
+    #     popularity as ``weight``.
+    #     """
+    #     self.suggest = {
+    #         'input': [' '.join(p) for p in permutations(self.name.split())],
+    #         'weight': self.popularity
+    #     }
 
-    class Meta:
-        index = "chihiro"
-        doc_type = "article"
+    class Index:
+        name = 'chihiro'
+        settings = {
+            'number_of_shards': 1,
+            'number_of_replicas': 0
+        }
 
 
 if __name__ == "__main__":

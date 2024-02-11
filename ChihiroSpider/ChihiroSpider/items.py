@@ -50,14 +50,12 @@ def _gen_suggests(index: Any, info_tuple: Tuple[str, int])-> List[Dict[str, List
 class JianshuItem(scrapy.Item):
     title = scrapy.Field()
     url = scrapy.Field()
-    content = scrapy.Field(
-        input_processor=MapCompose(_remove_html_tags)
-    )
+    content = scrapy.Field()
     author = scrapy.Field()
 
     def save(self)-> None:
         logging.info(f'------------enter itmes save -----------')
-
+        # ArticleType.init()
         article = ArticleType()
         # article.title = self['title']
         article.title = 'title'
@@ -67,8 +65,8 @@ class JianshuItem(scrapy.Item):
         # article.author = self['author']
         article.author = "author"
 
-        article.suggest = _gen_suggests("chihiro",
-                                        ((article.title, 10), (article.content, 7)))
+        # article.suggest = _gen_suggests("chihiro",
+        #                                 ((article.title, 10), (article.content, 7)))
 
         article.save()
         return
