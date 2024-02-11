@@ -14,7 +14,7 @@ RUN python -m ensurepip --upgrade
 
 RUN pip install --upgrade setuptools -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
-# RUN python3 -m ensurepip --upgrade 
+# RUN python3 -m ensurepip --upgrade
 
 RUN pip install poetry  -i https://pypi.tuna.tsinghua.edu.cn/simple
 # RUN pip install cffi -i https://pypi.tuna.tsinghua.edu.cn/simple

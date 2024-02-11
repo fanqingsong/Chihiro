@@ -7,10 +7,12 @@ authors = ["Qingsong <qsfan@qq.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
-scrapy ="^2.6.0"
-scrapy-redis = "^0.6.8"
+scrapy = "2.5.1"
+scrapy-redis = "0.6.8"
 elasticsearch = "^7.6.0"
 elasticsearch-dsl = "^7.1.0"
+cryptography = "36.0.2"
+pyOpenSSL = "22.0.0"
 
 [tool.poetry.dev-dependencies]
 

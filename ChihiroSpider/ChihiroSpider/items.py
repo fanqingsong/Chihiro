@@ -59,12 +59,15 @@ class JianshuItem(scrapy.Item):
         logging.info(f'------------enter itmes save -----------')
 
         article = ArticleType()
-        article.title = self['title']
+        # article.title = self['title']
+        article.title = 'title'
         article.url = self['url']
-        article.content = self['content']
-        article.author = self['author']
+        # article.content = self['content']
+        article.content = "content"
+        # article.author = self['author']
+        article.author = "author"
 
-        article.suggest = _gen_suggests(ArticleType._doc_type.index,
+        article.suggest = _gen_suggests("chihiro",
                                         ((article.title, 10), (article.content, 7)))
 
         article.save()

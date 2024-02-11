@@ -22,16 +22,20 @@ class JianshuSpider(RedisSpider):
         "JOBDIR": "spider_info/jianshu",
     }
 
-    def parse(self, response) ->Generator[Request, Any, None]:
+    def parse(self, response) -> Generator[Request, Any, None]:
         logging.info(f'----------------- jianshuspider parse -------------------')
 
         top_tags = response.xpath("//div[@class='main-top']/div[@class='info']/text()").extract()[0]
         total_nums = int(re.findall(r'\d+', top_tags)[0])
         article_urls = response.xpath("//ul[@class='note-list']/li/a/@href").extract()
+
         for url in article_urls:
+            logging.info(f'url = {url}')
             yield Request(url=parse.urljoin(self.base_url, url), callback=self.parse_detail)
             self.crawled += 1
+
         if self.crawled < total_nums:
+            logging.info(f'crawled = {self.crawled}')
             self.page_num += 1
             next_page_url = self.start_urls[0] + "&page={0}" .format(self.page_num)
             yield Request(url=next_page_url, callback=self.parse)
@@ -41,9 +45,10 @@ class JianshuSpider(RedisSpider):
 
         item_loader = JianshuItemLoader(item=JianshuItem(), response=response)
         item_loader.add_value("url", response.url)
-        item_loader.add_xpath("title", "//div[@class='article']/h1/text()")
-        item_loader.add_xpath('content', "//div[@class='show-content-free']")
-        item_loader.add_xpath('author', "//div[@class='info']/span/a/text()")
+        # item_loader.add_xpath("title", "//div[@class='article']/h1/text()")
+        item_loader.add_xpath("title", "/html/body/div/div[1]/div/div/section[1]/h1/text()")
+        item_loader.add_xpath('content', "/html/body/div/div[1]/div/div/section[1]/article/text()")
+        item_loader.add_xpath('author', "/html/body/div/div[1]/div/div/section[1]/div[2]/div/div/div[1]/span[1]/text()")
 
         jianshu_item = item_loader.load_item()
 
