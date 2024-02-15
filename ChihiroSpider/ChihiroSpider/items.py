@@ -10,13 +10,9 @@ import scrapy
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst, MapCompose
 from w3lib.html import remove_tags
-from .models.es_types import ArticleType
+from .models.es_types import ArticleType, QuotesType
 from elasticsearch_dsl.connections import connections
 from typing import Any, Tuple, List, Dict
-
-
-class ChihirospiderItem(scrapy.Item):
-    pass
 
 
 def _remove_html_tags(value):
@@ -74,3 +70,27 @@ class JianshuItem(scrapy.Item):
 
 class JianshuItemLoader(ItemLoader):
     default_output_processor = TakeFirst()
+
+
+
+class QuotesItem(scrapy.Item):
+    url = scrapy.Field()
+    text = scrapy.Field()
+    author = scrapy.Field()
+
+    def save(self)-> None:
+        logging.info(f'------------enter itmes save -----------')
+
+        quotes = QuotesType()
+        quotes.url = self['url']
+        quotes.text = self['text']
+        quotes.author = self['author']
+
+        quotes.save()
+        return
+
+
+class QuotesItemLoader(ItemLoader):
+    default_output_processor = TakeFirst()
+
+

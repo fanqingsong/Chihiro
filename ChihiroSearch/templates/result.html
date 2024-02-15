@@ -36,11 +36,11 @@
 
                     <div class="resultItem">
                             <div class="itemHead">
-                                <a href="{{ hit.url }}"  class="title"> {% autoescape off %}{{ hit.title }}  {% endautoescape %}</a>
+                                <a href="{{ hit.url }}"  class="title"> {% autoescape off %}{{ hit.author }}  {% endautoescape %}</a>
                                 <span class="divsion">-</span>
                             </div>
                             <div class="itemBody">
-                               {% autoescape off %} {{ hit.content }} {% endautoescape %}
+                               {% autoescape off %} {{ hit.text }} {% endautoescape %}
                             </div>
                             <div class="itemFoot">
                                 <span class="info">
