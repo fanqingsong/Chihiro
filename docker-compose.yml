@@ -53,6 +53,7 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
+#    command: redis-cli lpush QuotesSpider:start_urls http://quotes.toscrape.com/
     networks:
       - chihiro
 

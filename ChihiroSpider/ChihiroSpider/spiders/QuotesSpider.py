@@ -13,8 +13,14 @@ from scrapy_redis.spiders import RedisSpider
 class QuotesSpider(RedisSpider):
     name = 'QuotesSpider'
     allowed_domains = ['quotes.toscrape.com']
-    start_urls = ['http://quotes.toscrape.com']
-    base_url = 'http://quotes.toscrape.com/'
+    # start_urls = ['http://quotes.toscrape.com']
+    # base_url = 'http://quotes.toscrape.com/'
+
+    redis_key = 'QuotesSpider:start_urls'
+    # Number of url to fetch from redis on each attempt
+    # Update this as needed - this will be 16 by default (like the concurrency default)
+    redis_batch_size = 1
+
     page_num = 1
     crawled = 0
 

@@ -7,8 +7,9 @@ WORKDIR ./workspace
 
 # COPY pyproject.toml ./
 
-# RUN apt-get update
-# RUN apt-get install -y build-essential libssl-dev libffi-dev python3-dev 
+RUN apt-get update
+# RUN apt-get install -y build-essential libssl-dev libffi-dev python3-dev
+RUN apt-get install -y redis-tools
 
 RUN python -m ensurepip --upgrade
 
@@ -24,6 +25,7 @@ RUN poetry config virtualenvs.create false && poetry install --only main --no-in
 
 
 # run the app server in production with gunicorn
-CMD ["poetry", "run", "scrapy", "crawl", "QuotesSpider"]
+# CMD ["poetry", "run", "scrapy", "crawl", "QuotesSpider"]
+CMD ["/bin/bash", "-c", "redis-cli -h redis -p 6379 lpush QuotesSpider:start_urls http://quotes.toscrape.com/ && poetry run scrapy crawl QuotesSpider"]
 
 
