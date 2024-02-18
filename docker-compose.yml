@@ -25,7 +25,8 @@ services:
     command:
       - sh
       - -c
-      - "echo 'y' | ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.6.0/elasticsearch-analysis-ik-7.6.0.zip ;/usr/local/bin/docker-entrypoint.sh"
+#      - "echo 'y' | ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.6.0/elasticsearch-analysis-ik-7.6.0.zip ;/usr/local/bin/docker-entrypoint.sh"
+      - "/usr/local/bin/docker-entrypoint.sh"
     ports:
       - "9200:9200"
       - "9300:9300"

@@ -26,6 +26,6 @@ RUN poetry config virtualenvs.create false && poetry install --only main --no-in
 
 # run the app server in production with gunicorn
 # CMD ["poetry", "run", "scrapy", "crawl", "QuotesSpider"]
-CMD ["/bin/bash", "-c", "redis-cli -h redis -p 6379 lpush QuotesSpider:start_urls http://quotes.toscrape.com/ && poetry run scrapy crawl QuotesSpider"]
-
+# CMD ["/bin/bash", "-c", "sleep 20 && redis-cli -h redis -p 6379 lpush QuotesSpider:start_urls http://quotes.toscrape.com/ && poetry run scrapy crawl QuotesSpider"]
+CMD ["/bin/bash","-c","./startup.sh"]
 

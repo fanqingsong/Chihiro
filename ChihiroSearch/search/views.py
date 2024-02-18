@@ -78,6 +78,7 @@ class SearchView(View):
             else:
                 hit_dict["text"] = hit["_source"]["text"][:100]
             hit_dict["url"] = hit["_source"]["url"]
+            hit_dict["author"] = hit["_source"]["author"]
             hit_dict["score"] = hit["_score"]
             hit_list.append(hit_dict)
 
