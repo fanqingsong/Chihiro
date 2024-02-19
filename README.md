@@ -22,8 +22,9 @@ Chihiro use [poetry](https://python-poetry.org/docs/) manage dependency
 ## Run
 
 
+```
 docker-compose build
 docker-compose up
-
+```
 
 
