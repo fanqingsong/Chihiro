@@ -16,4 +16,14 @@ Chihiro consists of ChihiroSearch and ChihiroSpider.
 
 ### Dependency manage.
 
-Chihiro use [poetry](https://python-poetry.org/docs/) manage dependency.
+Chihiro use [poetry](https://python-poetry.org/docs/) manage dependency
+
+
+## Run
+
+
+docker-compose build
+docker-compose up
+
+
+
